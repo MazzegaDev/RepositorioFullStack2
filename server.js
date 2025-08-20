@@ -1,7 +1,8 @@
 import express from "express";
+const server = express();
 import usuarioRouter from "./routes/usuarioRoute.js";
 server.use(express.json()); //Trasnformar String para JSON
-const server = express();
+
 import swaggerUI from "swagger-ui-express";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
