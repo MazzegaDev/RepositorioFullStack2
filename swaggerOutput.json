@@ -14,13 +14,29 @@
   "paths": {
     "/usuario/": {
       "get": {
+        "tags": [
+          "usuario"
+        ],
+        "summary": "Listar todos os usuarios",
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           },
           "404": {
-            "description": "Not Found"
+            "description": "nenhum usuario encontrado na consulta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -28,6 +44,10 @@
         }
       },
       "post": {
+        "tags": [
+          "usuario"
+        ],
+        "summary": "Cadastra um novo usuario",
         "description": "",
         "responses": {
           "200": {
@@ -41,24 +61,21 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "nome": {
-                    "example": "any"
-                  },
-                  "email": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/usuario"
               }
             }
           }
         }
       },
       "put": {
+        "tags": [
+          "usuario"
+        ],
+        "summary": "Atualiza um usuario",
         "description": "",
         "responses": {
           "200": {
@@ -95,6 +112,10 @@
     },
     "/usuario/{id}": {
       "delete": {
+        "tags": [
+          "usuario"
+        ],
+        "summary": "Deleta um usuario",
         "description": "",
         "parameters": [
           {
@@ -116,6 +137,38 @@
           "500": {
             "description": "Internal Server Error"
           }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "erro": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "mensagem de erro"
+          }
+        },
+        "xml": {
+          "name": "erro"
+        }
+      },
+      "usuario": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "nome do usuario"
+          },
+          "email": {
+            "type": "string",
+            "example": "email do usuario"
+          }
+        },
+        "xml": {
+          "name": "usuario"
         }
       }
     }
