@@ -10,6 +10,7 @@ const server = express();
 server.use("/doc", swaggerUI.serve, swaggerUI.setup(outputJson));
 server.use("/usuario", usuarioRouter);
 
+
 server.listen(5000, function () {
   console.log("backend em funcionamento!");
 });
