@@ -2,10 +2,17 @@ import Usuario from "../entities/usuarioEntity.js";
 import UsuarioRepository from "../repositories/usuarioRepository.js";
 
 export default class UsuarioController {
+
+  #repositorio;
+
+  constructor(){
+    this.#repositorio = new UsuarioRepository();
+  }
+
   listar(req, res) {
     try {
-      let usuariosRepo = new UsuarioRepository();
-      let lista = usuariosRepo.listar();
+      
+      let lista = this.#repositorio.listar();
       if (lista.length > 0) {
         res.status(200).json(lista);
       } else {
@@ -27,8 +34,7 @@ export default class UsuarioController {
         //Cria um ID pela hora
         let id = Date.now()
         let entidade = new Usuario(id, nome, email);
-        let usuariosRepo = new UsuarioRepository();
-        let inseriu = usuariosRepo.cadastrar(entidade);
+        let inseriu = this.#repositorio.cadastrar(entidade);
         if (inseriu == true) {
           return res.status(200).json({ msg: "Usuario cadastrado" });
         } else {
@@ -52,10 +58,10 @@ export default class UsuarioController {
   deletar(req, res) {
     try {
       let { id } = req.params;
-      let usuarioRepo = new UsuarioRepository();
-      if (usuarioRepo.buscarPorid(id)) {
+
+      if (this.#repositorio.buscarPorid(id)) {
         //Usuario apto para delecao
-        usuarioRepo.deletar(id);
+        this.#repositorio.deletar(id);
         return res.status(200).json({ msg: "Usuario excluido com sucesso!" });
       } else {
         //Usuario nao existe para delecao
@@ -71,14 +77,13 @@ export default class UsuarioController {
     try {
       let { id, nome, email } = req.body;
       if (id && nome && email) {
-        let usuarioRepo = new UsuarioRepository();
-        if (usuarioRepo.buscarPorid(id)) {
+        if (this.#repositorio.buscarPorid(id)) {
           /*
             Cria uma nova entidade na controller e quando chama o metodo atualizar 
             procura uma entidade com os mesmos dados e atribui a nova entidade a ela
           */
           let entidade = new Usuario(id, nome, email);
-          usuarioRepo.atualizar(entidade);
+          this.#repositorio.atualizar(entidade);
           return res.status(200).json({msg: "Usuario alterado"})
         } else {
           return res.status(404).json({ msg: "Usuario nao existe" });
