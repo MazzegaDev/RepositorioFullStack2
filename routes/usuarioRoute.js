@@ -12,8 +12,16 @@ router.get("/", (req, res) => {
     //Definimos uma descrição personalizada para esta resposta
     /*  #swagger.responses[404] = {
         description: 'nenhum usuario encontrado na consulta',
-        schema:  {$ref: '#/components/schemas/erro'}}
+        schema:  {
+            $ref: '#/components/schemas/erro'}
+        }
+
+        #swagger.responses[200] = {
+        description: 'requisição bem sucedida'
+        }
     */
+
+    
     ctrl.listar(req, res)
 });
 router.post("/", (req, res) => {
@@ -26,7 +34,7 @@ router.post("/", (req, res) => {
         content: {
             "application/json": {
                 schema: {
-                    $ref: '#/components/schemas/usuario'
+                    ref: '#/components/schemas/usuario'
                 }
             }
         }
@@ -45,4 +53,4 @@ router.delete("/:id", (req, res) => {
     // #swagger.summary = 'Deleta um usuario'
     ctrl.deletar(req, res)
 });
-export default router;
+export default router; 

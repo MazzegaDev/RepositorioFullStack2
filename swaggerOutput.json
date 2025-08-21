@@ -21,7 +21,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "requisição bem sucedida"
           },
           "404": {
             "description": "nenhum usuario encontrado na consulta",
@@ -65,7 +65,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/usuario"
+                "ref": "#/components/schemas/usuario"
               }
             }
           }
