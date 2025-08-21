@@ -1,7 +1,7 @@
 import swaggerAutogen from "swagger-autogen";
 
 //Documentação da nossa API
-const doc = {
+const docs = {
   host: "localhost:5000",
   info: {
     tittle: "API REST - PFS2",
@@ -11,4 +11,4 @@ const doc = {
 
 const routes = ["./server.js"];
 const outputJson = "./swaggerOutput.json";
-swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, doc)
+swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, docs)
