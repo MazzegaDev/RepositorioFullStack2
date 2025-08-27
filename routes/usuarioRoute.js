@@ -10,15 +10,10 @@ router.get("/", (req, res) => {
     // #swagger.summary = 'Listar todos os usuarios'
 
     //Definimos uma descrição personalizada para esta resposta
-    /*  #swagger.responses[404] = {
-        description: 'nenhum usuario encontrado na consulta',
-        schema:  {
-            $ref: '#/components/schemas/erro'}
-        }
-
-        #swagger.responses[200] = {
-        description: 'requisição bem sucedida'
-        }
+    /* #swagger.responses[404] = {
+        description: 'Nenhum usuário encontrado na consulta',
+        schema: { $ref: '#/components/schemas/erro' }
+    }
     */
 
     

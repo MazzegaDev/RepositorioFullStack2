@@ -4,7 +4,8 @@ export default class Database {
 
     #conexao;
 
-    get conexao() { return this.#conexao;} set conexao(conexao) { this.#conexao = conexao; }
+    get conexao() { return this.#conexao;} 
+    set conexao(conexao) { this.#conexao = conexao; }
 
     constructor() {
 
