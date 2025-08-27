@@ -1,3 +1,4 @@
+import PerfilEntity from "../entities/perfilEntity.js";
 import Usuario from "../entities/usuarioEntity.js";
 import UsuarioRepository from "../repositories/usuarioRepository.js";
 
@@ -24,17 +25,16 @@ export default class UsuarioController {
     }
   }
 
-  cadastrar(req, res) {
+  async cadastrar(req, res) {
     try {
       //recuperar as informacoes do usuario no corpo da requisicao Pega exatamente essas propriedades do body e atribui a essas variaveis !Precissa ser exatamente esse nome!
 
-      let { nome, email } = req.body;
-      if (nome && email) {
+      let { nome, email, senha, ativo, perfil } = req.body;
+      if (nome && email && senha && ativo && perfil && perfil.id) {
         //Diferente de undefined
         //Cria um ID pela hora
-        let id = Date.now()
-        let entidade = new Usuario(id, nome, email);
-        let inseriu = this.#repositorio.cadastrar(entidade);
+        let entidade = new Usuario(0, nome, email, senha, ativo, new PerfilEntity(perfil.id));
+        let inseriu = await this.#repositorio.cadastrar(entidade);
         if (inseriu == true) {
           return res.status(200).json({ msg: "Usuario cadastrado" });
         } else {

@@ -146,9 +146,36 @@
       "erro": {
         "type": "object",
         "properties": {
-          "msg": {
+          "type": {
             "type": "string",
-            "example": "mensagem de erro"
+            "example": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "msg": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "mensagem de erro"
+                  }
+                }
+              }
+            }
+          },
+          "xml": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "erro"
+              }
+            }
           }
         },
         "xml": {
@@ -158,13 +185,102 @@
       "usuario": {
         "type": "object",
         "properties": {
-          "nome": {
+          "type": {
             "type": "string",
-            "example": "nome do usuario"
+            "example": "object"
           },
-          "email": {
-            "type": "string",
-            "example": "email do usuario"
+          "properties": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "nome do usuario"
+                  }
+                }
+              },
+              "email": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "email do usuario"
+                  }
+                }
+              },
+              "senha": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "123abc"
+                  }
+                }
+              },
+              "ativo": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "boolean"
+                  },
+                  "example": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "perfil": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "object"
+                  },
+                  "properties": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "number"
+                          },
+                          "example": {
+                            "type": "number",
+                            "example": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "xml": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "usuario"
+              }
+            }
           }
         },
         "xml": {

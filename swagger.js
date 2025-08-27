@@ -14,7 +14,12 @@ const docs = {
       },
       usuario:{
         nome: "nome do usuario",
-        email: "email do usuario"
+        email: "email do usuario",
+        senha: "123abc",
+        ativo: true,
+        perfil: {
+          id: 1,
+        }
       }
     }
   }
@@ -22,10 +27,10 @@ const docs = {
 
 const routes = ["./server.js"];
 const outputJson = "./swaggerOutput.json";
-<<<<<<< HEAD
+
 swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, docs)
-=======
-swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, doc)
+
+swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, docs)
 .then(async () => {
   //Quando executa o swagger.js ele documenta nossa API e executa a aplicacao, assim automatizando tudo
   await import("./server.js")
@@ -38,4 +43,4 @@ swaggerAutogen({openapi: '3.0.0'})(outputJson, routes, doc)
 
   },
 */
->>>>>>> 56d4cef5abebd8c6c0f7fdbcd1849a4bf32a51ae
+
