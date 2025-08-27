@@ -10,10 +10,10 @@ export default class UsuarioController {
     this.#repositorio = new UsuarioRepository();
   }
 
-  listar(req, res) {
+  async listar(req, res) {
     try {
       
-      let lista = this.#repositorio.listar();
+      let lista = await this.#repositorio.listar();
       if (lista.length > 0) {
         res.status(200).json(lista);
       } else {
