@@ -1,4 +1,4 @@
-import Base from "./base";
+import Base from "./base.js";
 
 
 export default class Imovel extends Base {
@@ -93,16 +93,5 @@ export default class Imovel extends Base {
         this.#disponivel = disponivel;
     }
 
-    toJSON(){
-        return{
-            id: this.#id,
-            descricao: this.#descricao,
-            endereco: this.#endereco,
-            cep: this.#cep,
-            bairro: this.#bairro,
-            cidade: this.#cidade,
-            valor: this.#valor,
-            disponivel: this.#disponivel,
-        }
-    }
+   
 }

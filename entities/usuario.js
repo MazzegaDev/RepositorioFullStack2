@@ -1,4 +1,4 @@
-import Base from "./base";
+import Base from "./base.js";
 
 
 export default class Usuario extends Base {
@@ -70,13 +70,4 @@ export default class Usuario extends Base {
         this.#perfil = perfil;
     }
 
-    toJSON() {
-        return {
-            id: this.#id,
-            nome: this.#nome,
-            email: this.#email,
-            ativo: this.#ativo,
-            perfil: this.#perfil
-        }
-    }
 }
