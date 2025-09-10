@@ -1,3 +1,4 @@
+
 import swaggerAutogen from "swagger-autogen";
 
 const doc = {
@@ -28,6 +29,12 @@ const doc = {
                 cidade: "Bostinopolis",
                 valor: 869.21,
                 disponivel: "S", 
+            }
+        },
+        securitySchemes: {
+            bearerAuth: {
+                type: "http",
+                scheme: 'bearer'
             }
         }
     }

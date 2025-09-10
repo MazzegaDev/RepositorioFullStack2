@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import UsuarioRepository from "../repositories/usuarioRepository.js";
 
 const secret = "PFS2@@@2$FP";
 
@@ -15,12 +16,46 @@ export default class AuthMiddleware {
       },
       secret, // segredo do token
       {
-        expiresIn: 300000,//tempo de expiração do token
+        expiresIn: 3000, //tempo de expiração do token
       }
     );
 
     return jsonWebToken;
   }
 
-  validarToken() {}
+  async validarToken(req, res, next) {
+    if (req.headers.authorization) {
+      //Verifica se no cabeçalho nosso token existe. Verfica se tem algo no atributo athoriztion.
+
+      //Se existe retorna o valor
+      let token = req.headers.authorization.split(" ")[1];
+      /*athorization: "Bearer <token> "
+      Recorta a string depois do espaço e pega a primeira posição -> split faz um array. */
+
+      try {
+        //Verify verifica se token e a chave secreta sao validos
+        //Se deu certo ele decodifica o corpo
+        //Validar as infos do usuario que esta no token
+        let payload = jwt.verify(token, secret);
+        let usuarioRepository = new UsuarioRepository();
+        //Valida o usuario pelo id no payload no banco de dados
+        let usuario = await usuarioRepository.buscarPorId(payload.id);
+        if (usuario) {
+          if (usuario.ativo) {
+            next();
+          } else {
+            return res.status(401).json({ msg: "Usuario inativo" });
+          }
+        } else {
+          return res.status(404).json({ msg: "Usuario nao encontrado" });
+        }
+        console.log(payload);
+      } catch (error) {
+        console.log(error);
+        return res.status(401).json({ msg: "Token invalido!" });
+      }
+    } else {
+      return res.status(401).json({ msg: "Token não autorizado" });
+    }
+  }
 }

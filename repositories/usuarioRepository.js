@@ -86,6 +86,8 @@ export default class UsuarioRepository {
             let row = rows[0];
             return this.toMap(row)
         }
+
+        return null;
     }
 
     toMap(row) {

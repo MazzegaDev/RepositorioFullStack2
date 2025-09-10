@@ -30,7 +30,7 @@ export default class UsuarioController {
         try {
             //recuperar as informações do usuario no corpo da requisição
             let {nome, email, senha, ativo, perfil} = req.body;
-            if(nome && email && senha && ativo && perfil && perfil.id) {
+            if(nome && email && senha  && perfil && perfil.id) {
                 //nome e email são diferentes de undefined
                 // Date.now() gera um id aleatório simulando o id do banco
                 let entidade = new Usuario(0, nome, email, senha, ativo, new Perfil(perfil.id));
