@@ -33,5 +33,11 @@ router.post("/", (req, res) => {
     }
     */
   ctrl.cadastrar(req, res);
+
 });
+
+router.get("/:id", (req, res) =>{
+    
+    ctrl.obterPorId(req,res);
+})
 export default router;

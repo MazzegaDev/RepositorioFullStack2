@@ -98,12 +98,27 @@ export default class ImovelController {
           throw new Error("erro ao excluir");
         }
       }else{
-        return res.status(404).json({msg: "imovel n encontrado"})
+        return res.status(404).json({msg: "imovel nao encontrado"})
       }
     } catch (error) {
-      
+      console.log(error);
+      return res.status(500).json({msg: "Nao foi possivel processar a requisição"})
     }
   }
 
   //Fazer o get por id aqui e na rota
+  async obterPorId(req, res){
+    try {
+      let {id} = req.params;
+      let usuario = await this.#ImovelRepo.obterPorId(id);
+      if(usuario){
+        return res.status(200).json(usuario);
+      }else{
+        return res.status(404).json({msg: "Nenhum imovel com esse id encontrado"});
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({msg: "Nao foi possivel processar a requisição"})
+    }
+  }
 }

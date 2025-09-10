@@ -19,7 +19,8 @@ export default class Base{
             */
             json[prop] = this[prop]
 
-            return json
+            
         }
+        return json
     }
 }

@@ -76,6 +76,18 @@ export default class UsuarioRepository {
         return result;
     }
 
+    async validarAcesso(email, senha){
+        const sql = "select * from tb_usuario where usu_email = ? and usu_senha = ?";
+        const values = [email, senha];
+
+        const rows = await this.#banco.ExecutaComando(sql, values);
+
+        if(rows.length > 0){
+            let row = rows[0];
+            return this.toMap(row)
+        }
+    }
+
     toMap(row) {
         let usuario = new Usuario();
         usuario.id = row["usu_id"];
