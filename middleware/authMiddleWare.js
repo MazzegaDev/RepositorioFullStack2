@@ -36,15 +36,29 @@ export default class AuthMiddleware {
       try {
         //Verify verifica se token e a chave secreta sao validos
 
-        //Se deu certo ele decodifica o corpo
+        //Se deu certo ele decodifica o corpo <- retorna as infos do usuario
         let payload = jwt.verify(token, secret);
+        /*
+          O jwt verify nos retorna as informações do usuario correspondente a esse token
+          { <- esse e o payload
+            id: 3, <- essas sao as informações que passamos na hora de criar o token na AuthController
+            email: 'john.doe@example.com',
+            nome: 'John Doe',
+            perfil: null,
+            iat: 1757545780,
+            exp: 1757548780
+          }
+        */
+
         let usuarioRepository = new UsuarioRepository();
 
         //Valida o usuario pelo id no payload no banco de dados
         let usuario = await usuarioRepository.buscarPorId(payload.id);
-        if (usuario) {//se o usuario existe
-          if (usuario.ativo) { // se o usuario esta ativo
-            next();// se ativo, conclui a req
+        if (usuario) {
+          //se o usuario existe
+          if (usuario.ativo) {
+            // se o usuario esta ativo
+            next(); // se ativo, conclui a req
           } else {
             return res.status(401).json({ msg: "Usuario inativo" });
           }
