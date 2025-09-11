@@ -7,12 +7,13 @@ export default class Auth {
   constructor() {
     this.#UsuarioRepo = new UsuarioRepository();
   }
+  //Gera um token para um determinado usuario
   async token(req, res) {
     try {
       let { email, senha } = req.body;
       if (email && senha) {
         //Chama o repository para encontrar esse usuario
-        let usuario = await this.#UsuarioRepo.validarAcesso(email, senha)
+        let usuario = await this.#UsuarioRepo.validarAcesso(email, senha);
         if (usuario) {
           //gerar o token para o usuario encontrado
 

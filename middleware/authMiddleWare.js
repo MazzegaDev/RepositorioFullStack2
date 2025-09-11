@@ -29,7 +29,9 @@ export default class AuthMiddleware {
 
       //Se existe retorna o valor
       //Aqui estamos pegando o token no cabeçalho da req
+
       let token = req.headers.authorization.split(" ")[1];
+      
       /*athorization: "Bearer <token> "
       Recorta a string depois do espaço e pega a primeira posição -> split faz um array. */
 
