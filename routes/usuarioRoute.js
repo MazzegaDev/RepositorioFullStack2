@@ -7,7 +7,7 @@ const Auth = new AuthMiddleware();
 
 let ctrl = new UsuarioController();
 //toda rota que necessite ser privada colocamos o metodo validar token nos parametros
-router.get("/", Auth.validarToken, (req, res) => {
+router.get("/", (req, res) => {
   //comentarios do swagger
   // #swagger.tags = ['Usuário']
   // #swagger.summary = 'Listar todos os usuários'

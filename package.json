@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Para melhor organizar o repositorio cada aula tera um branch separada",
   "type": "module",
   "dependencies": {
     "express": "^5.1.0",
@@ -17,5 +17,17 @@
     "swagger": "^0.7.5",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
-  }
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MazzegaDev/RepositorioFullStack2.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/MazzegaDev/RepositorioFullStack2/issues"
+  },
+  "homepage": "https://github.com/MazzegaDev/RepositorioFullStack2#readme"
 }
