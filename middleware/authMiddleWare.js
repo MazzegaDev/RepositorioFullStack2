@@ -60,6 +60,7 @@ export default class AuthMiddleware {
           //se o usuario existe
           if (usuario.ativo) {
             // se o usuario esta ativo
+            req.usuarioLogado = usuario;
             next(); // se ativo, conclui a req
           } else {
             return res.status(401).json({ msg: "Usuario inativo" });
