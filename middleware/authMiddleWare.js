@@ -61,6 +61,9 @@ export default class AuthMiddleware {
           if (usuario.ativo) {
             // se o usuario esta ativo
             req.usuarioLogado = usuario;
+            /*
+              Durante a requisição vai ser criado um atributo novo, e esse atributo tera o valor do usuario que foi logado, ou seja receber o payload dele
+            */
             next(); // se ativo, conclui a req
           } else {
             return res.status(401).json({ msg: "Usuario inativo" });

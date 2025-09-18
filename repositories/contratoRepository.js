@@ -3,6 +3,11 @@ import ContratoEntity from "../entities/contratoEntity.js";
 
 export default class ContratoRepository {
   #db;
+
+   set db(db) {
+    this.#db = db;
+  }
+
   constructor() {
     this.#db = new Database();
   }

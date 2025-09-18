@@ -4,6 +4,11 @@ import Database from "../db/database.js";
 export default class AluguelRepository{
 
     #db;
+    //Possibilita as transsações no banco
+    set db(db){
+        this.#db = db;
+    }
+
     constructor(){
         this.#db = new Database();
     }
